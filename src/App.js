@@ -8,7 +8,6 @@ function App(props) {
   return (
     <div className="App">
       <header className="App-header">
-
         <Message newMessage='My message' />
       </header>
     </div>
