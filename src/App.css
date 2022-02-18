@@ -36,3 +36,44 @@
     transform: rotate(360deg);
   }
 }
+
+.message-box {
+  box-sizing: border-box;
+  margin-top: 30px;
+  width: 300px;
+  height: 450px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: auto;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  box-shadow: 10px 8px 19px 0px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.author {
+  font-size: 8px;
+  align-self: flex-end;
+}
+.message-input {
+  border: none;
+  height: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+
+.message-btn{
+  border: none;
+  box-sizing: border-box;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: yellowgreen;
+  color: white;
+  height: 25px;
+  padding: 0 15px;
+}
