@@ -88,3 +88,11 @@
   justify-content: space-between;
   width: 250px;
 }
+
+.work-space {
+  display: flex;
+}
+
+.chat-list {
+  width: 150px;
+}

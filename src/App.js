@@ -1,12 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 import Message from './Message';
 import './Message.css';
 import React, { useEffect, useState } from 'react';
 import { AUTHOR } from './constant/common';
 import { Fab, TextField } from '@mui/material';
-import { Send, ArrowForwar, ArrowUpward } from '@mui/icons-material';
-
+import { ArrowUpward } from '@mui/icons-material';
+import { List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@mui/material';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Chats from './pages/Chats';
 
 
 function App() {
@@ -44,29 +47,55 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Message newMessage='My message' />
-        <div>
-          <div className='message-box'>
-            {messageList.map((item, index) =>
-            (<div className='message-field' key={index}>
-              <div className='author'>{item.author}</div>
-              <div className='message-text'>{item.text}</div>
+        <div className='work-space'>
 
-            </div>)
-            )}
+          <div className='chat-list'>
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
+              <ListItem>
+                Chat 1
+              </ListItem>
+              <ListItem>
+                Chat 2
+              </ListItem>
+            </List>
           </div>
-          <div className='control-place'>
-            <TextField
-              type={'text'}
-              value={value}
-              label='Введите сообщение'
-              variant="standard"
-              id="standard-basic"
-              color="success"
-              onChange={handlInput}
-              autoFocus={true}
-            />
-            <Fab color='success' onClick={handlButton}><ArrowUpward /></Fab>
+
+          <div>
+
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/chats' element={<Chats />} />
+            </Routes>
+
+            <div className='message-box'>
+              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
+                {messageList.map((item, index) =>
+                (<ListItem key={index}>
+                  <ListItemAvatar>
+                    <Avatar>{item.author}</Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={item.text} secondary={item.author} />
+                </ListItem>)
+                )}
+
+              </List>
+            </div>
+            <div className='control-place'>
+              <TextField
+                type={'text'}
+                value={value}
+                label='Введите сообщение'
+                variant="standard"
+                id="standard-basic"
+                color="success"
+                onChange={handlInput}
+                autoFocus={true}
+              />
+              <Fab color='success' onClick={handlButton}><ArrowUpward /></Fab>
+            </div>
           </div>
+
         </div>
       </header >
     </div >
