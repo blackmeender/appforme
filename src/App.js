@@ -3,13 +3,14 @@ import Message from './Message';
 import './Message.css';
 import React, { useEffect, useState } from 'react';
 import { AUTHOR } from './constant/common';
-import { Fab, TextField } from '@mui/material';
+import { Fab, Menu, TextField } from '@mui/material';
 import { ArrowUpward } from '@mui/icons-material';
 import { List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@mui/material';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Chats from './pages/Chats';
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -42,35 +43,49 @@ function App() {
       clearTimeout()
     }
   }, [messageList])
+  const messageList = (props) => {
+    const { messages } = props
+  }
 
+  messageList.propTypes = {
+    messages: PropTypes.arrayOf(
+      propTypes.shape({
+        text: PropTypes.string,
+        author: PropTypes.string
+      })
+    )
+  }
   return (
     <div className="App">
       <header className="App-header">
         <Message newMessage='My message' />
+
+        <Routes>
+          <Route path='/' exact element={<Home />} />
+          <Route path='/profile' exact element={<Profile />} />
+          <Route path='/chats/:chatId' exact element={<Chats />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+        <Menu>
+          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
+            <ListItem>
+              <Link to='/' className='link'>Home</Link>
+            </ListItem>
+            <ListItem >
+              <Link to='/profile' className='link'>Profile</Link>
+            </ListItem>
+            <ListItem>
+              <Link to='/chats' className='link'>Chats</Link>
+            </ListItem>
+          </List>
+        </Menu>
+
         <div className='work-space'>
-
-          <div className='chat-list'>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
-              <ListItem>
-                Chat 1
-              </ListItem>
-              <ListItem>
-                Chat 2
-              </ListItem>
-            </List>
-          </div>
-
           <div>
-
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/chats' element={<Chats />} />
-            </Routes>
-
             <div className='message-box'>
               <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
-                {messageList.map((item, index) =>
+                {messageList?.map((item, index) =>
                 (<ListItem key={index}>
                   <ListItemAvatar>
                     <Avatar>{item.author}</Avatar>

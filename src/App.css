@@ -93,6 +93,7 @@
   display: flex;
 }
 
-.chat-list {
-  width: 150px;
+.link {
+  color: white;
+  text-decoration: none;
 }
