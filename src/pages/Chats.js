@@ -3,22 +3,16 @@ import { useParams } from "react-router-dom"
 import { AUTHOR } from "../constant/common"
 import Message from "../Message"
 import NotFound from "./NotFound"
+import MessageList from "../components/MessageList"
+import ChatList from "../components/ChatList"
+import ControlPanel from "../components/ControlPanel"
 
 
-const initialChats = {
-    id1: {
-        name: 'Chat1',
-        messages: [{ text: 'theFirstChat', author: AUTHOR.bot }]
-    },
-    id2: {
-        name: 'Chat2',
-        messages: [{ text: 'theSecondChat', author: AUTHOR.bot }]
-    }
-}
+
 
 const Chats = () => {
 
-    const [chats, setChats] = useState(initialChats)
+    const { chats, setChats } = props
 
     const { chatId } = useParams()
 
@@ -26,8 +20,15 @@ const Chats = () => {
         return <NotFound />
     }
     return (
-        <div>
-            <MessageList messages={chats[chatId].messages} />
+        <div className='work-space'>
+            <div className="chat-list">
+                <ChatList chats={chats} />
+            </div>
+            <div>
+                <MessageList messages={chats[chatId].messages} />
+                <ControlPanel chats={chats} setChats={(chats) => setChats(chats)} />
+            </div>
+
         </div>
     )
 }

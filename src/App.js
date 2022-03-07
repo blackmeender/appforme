@@ -12,59 +12,31 @@ import Profile from './pages/Profile';
 import Chats from './pages/Chats';
 import NotFound from './pages/NotFound';
 
+const initialChats = {
+  id1: {
+    name: 'Chat1',
+    messages: [{ text: 'theFirstChat', author: AUTHOR.bot }]
+  },
+  id2: {
+    name: 'Chat2',
+    messages: [{ text: 'theSecondChat', author: AUTHOR.bot }]
+  }
+}
 
 function App() {
 
-  const [messageList, setMessageList] = useState([])
-  const [value, setValue] = useState("")
+  const [chats, setChats] = useState(initialChats)
 
-  const handlInput = (event) => {
-    setValue(event.target.value)
-  }
-
-  const handlButton = () => {
-    setMessageList([...messageList, {
-      text: value,
-      author: AUTHOR.me
-    }])
-    setValue('')
-  }
-
-  useEffect(() => {
-    if (messageList.length > 0 && messageList[messageList.length - 1].author === AUTHOR.me) {
-      setTimeout(() =>
-        setMessageList([...messageList, {
-          text: 'hello',
-          author: AUTHOR.bot
-        }]), 1000)
-    }
-
-    return () => {
-      clearTimeout()
-    }
-  }, [messageList])
-  const messageList = (props) => {
-    const { messages } = props
-  }
-
-  messageList.propTypes = {
-    messages: PropTypes.arrayOf(
-      propTypes.shape({
-        text: PropTypes.string,
-        author: PropTypes.string
-      })
-    )
-  }
   return (
     <div className="App">
       <header className="App-header">
-        <Message newMessage='My message' />
+
 
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/profile' exact element={<Profile />} />
-          <Route path='/chats/:chatId' exact element={<Chats />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path='/chats/:chatId' exact element={<Chats chats={chats} setChats={(chat) => setChats(chat)} />} />
+          <Route path="*" element={<NotFound chats={chats} />} />
         </Routes>
 
         <Menu>
@@ -81,37 +53,6 @@ function App() {
           </List>
         </Menu>
 
-        <div className='work-space'>
-          <div>
-            <div className='message-box'>
-              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
-                {messageList?.map((item, index) =>
-                (<ListItem key={index}>
-                  <ListItemAvatar>
-                    <Avatar>{item.author}</Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary={item.text} secondary={item.author} />
-                </ListItem>)
-                )}
-
-              </List>
-            </div>
-            <div className='control-place'>
-              <TextField
-                type={'text'}
-                value={value}
-                label='Введите сообщение'
-                variant="standard"
-                id="standard-basic"
-                color="success"
-                onChange={handlInput}
-                autoFocus={true}
-              />
-              <Fab color='success' onClick={handlButton}><ArrowUpward /></Fab>
-            </div>
-          </div>
-
-        </div>
       </header >
     </div >
   );
