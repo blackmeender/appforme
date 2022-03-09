@@ -1,7 +1,4 @@
-import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { AUTHOR } from "../constant/common"
-import Message from "../Message"
 import NotFound from "./NotFound"
 import MessageList from "../components/MessageList"
 import ChatList from "../components/ChatList"
@@ -10,7 +7,7 @@ import ControlPanel from "../components/ControlPanel"
 
 
 
-const Chats = () => {
+const Chats = (props) => {
 
     const { chats, setChats } = props
 

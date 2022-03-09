@@ -1,12 +1,12 @@
 
+import { AUTHOR as AUTHORS } from '../constant/common';
 import { useParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import { AUTHOR } from './constant/common';
+import React, { useState } from 'react';
 import { Fab, TextField } from '@mui/material';
 import { ArrowUpward } from '@mui/icons-material';
 
 const ControlPanel = (props) => {
-
+    const { chatId } = useParams();
     const { chats, setChats } = props
     const [value, setValue] = useState("")
 
