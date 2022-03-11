@@ -39,7 +39,7 @@ function App() {
           <Route path="*" element={<NotFound chats={chats} />} />
         </Routes>
 
-        <Menu>
+        {/* <Menu>
           <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
             <ListItem>
               <Link to='/' className='link'>Home</Link>
@@ -51,7 +51,7 @@ function App() {
               <Link to='/chats' className='link'>Chats</Link>
             </ListItem>
           </List>
-        </Menu>
+        </Menu> */}
 
       </header >
     </div >

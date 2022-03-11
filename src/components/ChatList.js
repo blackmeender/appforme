@@ -8,7 +8,7 @@ const ChatList = (props) => {
     return (<div>
         {Object.keys(chats).map((id, index) => (
             <div key={index}>
-                <Link to={`/chats/${id}`}>
+                <Link to={`/chats/${id}`} className='link'>
                     {chats[id].name}
                 </Link>
 
