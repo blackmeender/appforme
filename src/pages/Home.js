@@ -1,4 +1,4 @@
-import { Fab, Menu, TextField } from '@mui/material';
+import { Fab, Menu, MenuList, TextField } from '@mui/material';
 import { ArrowUpward } from '@mui/icons-material';
 import { List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@mui/material';
 import { Routes, Route, Link } from 'react-router-dom';
@@ -9,12 +9,12 @@ const Home = () => {
         <>
             <div className='links'>
 
-                <Link className='link' to='/'> home </Link>
+                {/* <Link className='link' to='/'> home </Link>
                 <Link className='link' to='/profile'> profile </Link>
-                <Link className='link' to='/chats'> chats </Link>
+                <Link className='link' to='/chats'> chats </Link> */}
 
 
-                {/* <Menu>
+                <MenuList>
                     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
                         <ListItem>
                             <Link to='/' className='link'>Home</Link>
@@ -26,7 +26,7 @@ const Home = () => {
                             <Link to='/chats' className='link'>Chats</Link>
                         </ListItem>
                     </List>
-                </Menu> */}
+                </MenuList>
             </div>
             <h1>Home</h1>
         </>
