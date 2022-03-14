@@ -1,73 +1,58 @@
-import logo from './logo.svg';
 import './App.css';
 import Message from './Message';
 import './Message.css';
 import React, { useEffect, useState } from 'react';
 import { AUTHOR } from './constant/common';
-import { Fab, TextField } from '@mui/material';
-import { Send, ArrowForwar, ArrowUpward } from '@mui/icons-material';
+import { Fab, Menu, TextField } from '@mui/material';
+import { ArrowUpward } from '@mui/icons-material';
+import { List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@mui/material';
+import { Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Chats from './pages/Chats';
+import NotFound from './pages/NotFound';
 
-
+const initialChats = {
+  id1: {
+    name: 'Chat1',
+    messages: [{ text: 'theFirstChat', author: AUTHOR.bot }]
+  },
+  id2: {
+    name: 'Chat2',
+    messages: [{ text: 'theSecondChat', author: AUTHOR.bot }]
+  }
+}
 
 function App() {
 
-  const [messageList, setMessageList] = useState([])
-  const [value, setValue] = useState("")
-
-  const handlInput = (event) => {
-    setValue(event.target.value)
-  }
-
-  const handlButton = () => {
-    setMessageList([...messageList, {
-      text: value,
-      author: AUTHOR.me
-    }])
-    setValue('')
-  }
-
-  useEffect(() => {
-    if (messageList.length > 0 && messageList[messageList.length - 1].author === AUTHOR.me) {
-      setTimeout(() =>
-        setMessageList([...messageList, {
-          text: 'hello',
-          author: AUTHOR.bot
-        }]), 1000)
-    }
-
-    return () => {
-      clearTimeout()
-    }
-  }, [messageList])
+  const [chats, setChats] = useState(initialChats)
 
   return (
     <div className="App">
       <header className="App-header">
-        <Message newMessage='My message' />
-        <div>
-          <div className='message-box'>
-            {messageList.map((item, index) =>
-            (<div className='message-field' key={index}>
-              <div className='author'>{item.author}</div>
-              <div className='message-text'>{item.text}</div>
 
-            </div>)
-            )}
-          </div>
-          <div className='control-place'>
-            <TextField
-              type={'text'}
-              value={value}
-              label='Введите сообщение'
-              variant="standard"
-              id="standard-basic"
-              color="success"
-              onChange={handlInput}
-              autoFocus={true}
-            />
-            <Fab color='success' onClick={handlButton}><ArrowUpward /></Fab>
-          </div>
-        </div>
+
+        <Routes>
+          <Route path='/' exact element={<Home />} />
+          <Route path='/profile' exact element={<Profile />} />
+          <Route path='/chats/:chatId' exact element={<Chats chats={chats} setChats={(chat) => setChats(chat)} />} />
+          <Route path="*" element={<NotFound chats={chats} />} />
+        </Routes>
+
+        {/* <Menu>
+          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
+            <ListItem>
+              <Link to='/' className='link'>Home</Link>
+            </ListItem>
+            <ListItem >
+              <Link to='/profile' className='link'>Profile</Link>
+            </ListItem>
+            <ListItem>
+              <Link to='/chats' className='link'>Chats</Link>
+            </ListItem>
+          </List>
+        </Menu> */}
+
       </header >
     </div >
   );

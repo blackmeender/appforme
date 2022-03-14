@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import './Message.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { green, orange } from '@mui/material/colors';
+import { BrowserRouter } from 'react-router-dom';
+
 
 const theme = createTheme({
   status: {
@@ -20,7 +22,9 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
 
   </React.StrictMode>,
