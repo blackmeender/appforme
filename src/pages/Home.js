@@ -9,12 +9,12 @@ const Home = () => {
         <>
             <div className='links'>
 
-                {/* <Link className='link' to='/'> home </Link>
+                <Link className='link' to='/'> home </Link>
                 <Link className='link' to='/profile'> profile </Link>
-                <Link className='link' to='/chats'> chats </Link> */}
+                <Link className='link' to='/chats'> chats </Link>
 
 
-                <MenuList>
+                {/* <MenuList>
                     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.success' }}>
                         <ListItem>
                             <Link to='/' className='link'>Home</Link>
@@ -26,7 +26,7 @@ const Home = () => {
                             <Link to='/chats' className='link'>Chats</Link>
                         </ListItem>
                     </List>
-                </MenuList>
+                </MenuList> */}
             </div>
             <h1>Home</h1>
         </>
