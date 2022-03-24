@@ -6,11 +6,11 @@ import { addChat } from '../store/chats/action'
 
 
 const ChatList = () => {
-    const { chatId } = useParams();
+
     const [visible, setVisible] = useState(false)
     const [chatName, setChatName] = useState('')
     const dispatch = useDispatch()
-    const { chats } = useSelector(state => state.chats.chatList)
+    const chats = useSelector(state => state.chats.chatList)
 
     const handleOpen = () => setVisible(true)
 
@@ -24,11 +24,17 @@ const ChatList = () => {
 
     return (
         <>
+            <div className='links'>
+                <Link to='/' className='link'>Home</Link>
+                <Link to='/profile' className='link'>Profile</Link>
+                <Link to='/chats' className='link'>Chats</Link>
+
+            </div>
             <div>
-                {chats.map((id, index) => (
+                {chats?.map((chat, index) => (
                     <div key={index}>
-                        <Link to={`/chats/${chats.id}`} className='link'>
-                            {chats.name}
+                        <Link to={`/chats/${chat.id}`} className='link'>
+                            {chat.name}
                         </Link>
 
                     </div>

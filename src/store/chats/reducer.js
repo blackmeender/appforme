@@ -4,7 +4,7 @@ const initialState = {
     chatList: []
 }
 
-const chatReducer = (state = initialState, action) => {
+const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CHAT:
             return {
@@ -22,4 +22,4 @@ const chatReducer = (state = initialState, action) => {
     }
 }
 
-export default chatReducer
+export default chatsReducer
