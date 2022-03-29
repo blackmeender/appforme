@@ -4,11 +4,15 @@ import { useParams } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Fab, TextField } from '@mui/material';
 import { ArrowUpward } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMessage } from '../store/messages/action';
 
-const ControlPanel = (props) => {
+const ControlPanel = () => {
     const { chatId } = useParams();
-    const { chats, setChats } = props
     const [value, setValue] = useState("")
+    const { name } = useSelector(state => state.profile)
+    const dispatch = useDispatch()
+
 
     const handlInput = (event) => {
         setValue(event.target.value)
@@ -16,17 +20,11 @@ const ControlPanel = (props) => {
 
     const handlButton = () => {
         if (value !== '') {
-            const newObject = {
-                ...chats,
-                [chatId]: {
-                    name: chats[chatId].name,
-                    messages: [...chats[chatId].messages, {
-                        text: value,
-                        author: AUTHORS.me
-                    }]
-                }
+            const message = {
+                text: value,
+                author: name
             }
-            setChats(newObject)
+            dispatch(addMessage(chatId, message))
             setValue('');
         }
     }

@@ -12,20 +12,11 @@ import Profile from './pages/Profile';
 import Chats from './pages/Chats';
 import NotFound from './pages/NotFound';
 
-const initialChats = {
-  id1: {
-    name: 'Chat1',
-    messages: [{ text: 'theFirstChat', author: AUTHOR.bot }]
-  },
-  id2: {
-    name: 'Chat2',
-    messages: [{ text: 'theSecondChat', author: AUTHOR.bot }]
-  }
-}
+
 
 function App() {
 
-  const [chats, setChats] = useState(initialChats)
+
 
   return (
     <div className="App">
@@ -35,8 +26,8 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/profile' exact element={<Profile />} />
-          <Route path='/chats/:chatId' exact element={<Chats chats={chats} setChats={(chat) => setChats(chat)} />} />
-          <Route path="*" element={<NotFound chats={chats} />} />
+          <Route path='/chats/:chatId' exact element={<Chats />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         {/* <Menu>
