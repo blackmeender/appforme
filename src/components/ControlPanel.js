@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Fab, TextField } from '@mui/material';
 import { ArrowUpward } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessage } from '../store/messages/action';
+import { addMessage, addMessageWidthSaga, addMessageWidthThunk } from '../store/messages/action';
 
 const ControlPanel = () => {
     const { chatId } = useParams();
@@ -27,6 +27,7 @@ const ControlPanel = () => {
                 author: name
             }
             dispatch(addMessage(chatId, message))
+            // dispatch(addMessageWidthThunk(chatId, message))
             setValue('');
         }
     }

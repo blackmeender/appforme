@@ -10,3 +10,4 @@ export const deleteChat = (index) => ({
     type: DELETE_CHAT,
     payload: index
 })
+

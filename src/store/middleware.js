@@ -10,7 +10,7 @@ const middleware = store => next => action => {
         }
         setTimeout(() => {
             store.dispatch(addMessage(action.payload.chatId, botMessage))
-        }, 3000)
+        }, 1000)
     }
 
 
