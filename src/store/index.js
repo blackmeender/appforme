@@ -1,7 +1,13 @@
-import { combineReducers, createStore } from "redux"
+import { applyMiddleware, combineReducers, compose, createStore } from "redux"
 import messagesReducer from "./messages/reducer"
 import chatsReducer from "./chats/reducer"
 import profileReducer from "./profile/reducer"
+import middleware from "./middleware"
+// import thunk from "redux-thunk"
+// import createSagaMiddleware from "@redux-saga/core"
+// import mySaga from "./sagas"
+import storage from "redux-persist/lib/storage"
+import { persistReducer, persistStore } from "redux-persist"
 
 const reducers = combineReducers({
     chats: chatsReducer,
@@ -9,8 +15,23 @@ const reducers = combineReducers({
     profile: profileReducer
 })
 
-const store = createStore(reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__())
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose
+const persistConfig = {
+    key: 'root',
+    storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducers)
+// const sagaMiddleWare = createSagaMiddleware()
+const store = createStore(
+    persistedReducer,
+    composeEnhancers(applyMiddleware(middleware))
+)
+
+// sagaMiddleWare.run(mySaga)
+
+
+
+export const persistor = persistStore(store)
 
 export default store

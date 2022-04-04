@@ -1,8 +1,9 @@
+import { Delete } from "@mui/icons-material";
 import { Dialog, TextField } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom"
-import { addChat } from '../store/chats/action'
+import { addChat, deleteChat } from '../store/chats/action'
 
 
 const ChatList = () => {
@@ -22,6 +23,10 @@ const ChatList = () => {
         setVisible(false)
     }
 
+    const removeChat = (index) => {
+        dispatch(deleteChat(index))
+    }
+
     return (
         <>
             <div className='links'>
@@ -35,6 +40,7 @@ const ChatList = () => {
                     <div key={index}>
                         <Link to={`/chats/${chat.id}`} className='link'>
                             {chat.name}
+                            <button onClick={() => removeChat(index)}><Delete /></button>
                         </Link>
 
                     </div>

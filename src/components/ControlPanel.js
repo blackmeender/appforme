@@ -1,17 +1,19 @@
 
-import { AUTHOR as AUTHORS } from '../constant/common';
+import { AUTHOR } from '../constant/common';
 import { useParams } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Fab, TextField } from '@mui/material';
 import { ArrowUpward } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessage } from '../store/messages/action';
+import { addMessage, addMessageWidthSaga, addMessageWidthThunk } from '../store/messages/action';
 
 const ControlPanel = () => {
     const { chatId } = useParams();
     const [value, setValue] = useState("")
     const { name } = useSelector(state => state.profile)
     const dispatch = useDispatch()
+    const allMessages = useSelector(state => state.messages.messageList)
+    const messages = allMessages?.[chatId]
 
 
     const handlInput = (event) => {
@@ -25,23 +27,12 @@ const ControlPanel = () => {
                 author: name
             }
             dispatch(addMessage(chatId, message))
+            // dispatch(addMessageWidthThunk(chatId, message))
             setValue('');
         }
     }
 
-    // useEffect(() => {
-    //     if (messageList.length > 0 && messageList[messageList.length - 1].author === AUTHOR.me) {
-    //         setTimeout(() =>
-    //             setMessageList([...messageList, {
-    //                 text: 'hello',
-    //                 author: AUTHOR.bot
-    //             }]), 1000)
-    //     }
 
-    //     return () => {
-    //         clearTimeout()
-    //     }
-    // }, [messageList])
 
     return (
         <div className='control-place'>
