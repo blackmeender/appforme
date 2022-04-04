@@ -1,6 +1,7 @@
-import { ArrowUpward, Android, SentimentSatisfiedAlt } from '@mui/icons-material';
-import React, { useEffect, useState } from 'react';
 export const AUTHOR = {
     me: "me",
     bot: "bot"
 }
+
+export const API_URL_PUBLICK = 'https://api.github.com/gists/public'
+export const API_URL_GIST = 'https://api.github.com/gists/'

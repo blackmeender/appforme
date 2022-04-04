@@ -9,6 +9,7 @@ import { ArrowUpward } from '@mui/icons-material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
+
 const Profile = () => {
     const { showName, name } = useSelector(state => state.profile)
     // const [dummy, setDummy] = useState()
@@ -31,6 +32,7 @@ const Profile = () => {
     return (
         <div className='profile-wrapper'>
             <div className='links'>
+                <Link className='link' to='/gists'> Gists </Link>
                 <Link to='/' className='link'>Home</Link>
                 <Link to='/profile' className='link'>Profile</Link>
                 <Link to='/chats' className='link'>Chats</Link>

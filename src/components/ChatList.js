@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom"
 import { addChat, deleteChat } from '../store/chats/action'
 
 
+
 const ChatList = () => {
 
     const [visible, setVisible] = useState(false)
@@ -30,6 +31,7 @@ const ChatList = () => {
     return (
         <>
             <div className='links'>
+                <Link className='link' to='/gists'> Gists </Link>
                 <Link to='/' className='link'>Home</Link>
                 <Link to='/profile' className='link'>Profile</Link>
                 <Link to='/chats' className='link'>Chats</Link>
