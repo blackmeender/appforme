@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Chats from './pages/Chats';
 import NotFound from './pages/NotFound';
+import Gists from './pages/Gists';
 
 
 
@@ -25,6 +26,7 @@ function App() {
 
         <Routes>
           <Route path='/' exact element={<Home />} />
+          <Route path='/gists' element={<Gists />}></Route>
           <Route path='/profile' exact element={<Profile />} />
           <Route path='/chats/:chatId' exact element={<Chats />} />
           <Route path="*" element={<NotFound />} />

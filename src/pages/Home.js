@@ -9,6 +9,7 @@ const Home = () => {
         <>
             <div className='links'>
 
+                <Link className='link' to='/gists'> Gists </Link>
                 <Link className='link' to='/'> home </Link>
                 <Link className='link' to='/profile'> profile </Link>
                 <Link className='link' to='/chats'> chats </Link>
