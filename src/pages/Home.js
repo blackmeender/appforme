@@ -10,9 +10,11 @@ const Home = () => {
             <div className='links'>
 
                 <Link className='link' to='/gists'> Gists </Link>
-                <Link className='link' to='/'> home </Link>
-                <Link className='link' to='/profile'> profile </Link>
-                <Link className='link' to='/chats'> chats </Link>
+                <Link to='/' className='link'>Home</Link>
+                <Link to='/profile' className='link'>Profile</Link>
+                <Link to='/chats' className='link'>Chats</Link>
+                <Link to='/registration' className='link'>Registration</Link>
+                <Link to='/login' className='link'>Enter</Link>
 
 
                 {/* <MenuList>

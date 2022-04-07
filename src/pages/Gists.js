@@ -36,6 +36,8 @@ const Gists = () => {
                 <Link to='/' className='link'>Home</Link>
                 <Link to='/profile' className='link'>Profile</Link>
                 <Link to='/chats' className='link'>Chats</Link>
+                <Link to='/registration' className='link'>Registration</Link>
+                <Link to='/login' className='link'>Enter</Link>
 
             </div>
             <div>Gists</div>
