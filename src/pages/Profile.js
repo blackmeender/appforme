@@ -42,8 +42,6 @@ const Profile = () => {
             </div>
             <ToastContainer />
             <h1>Profile</h1>
-
-
             <FormControlLabel
                 control={
                     <Checkbox
