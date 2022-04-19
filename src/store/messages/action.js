@@ -34,7 +34,7 @@ export const addMessage = (chatId, message) => ({
 //     }
 // }
 
-export const updateMessages = (chatId) => ({
+export const updateMessages = (chatId, messages) => ({
     type: UPDATE_MESSAGES,
     chatId,
     messages

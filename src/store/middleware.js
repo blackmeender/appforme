@@ -44,15 +44,16 @@ export const deleteChatWithFB = (id) => async () => {
     remove(messageRef).then(res => { console.log(2, res) })
 }
 
-export const initTrackerWithFB = (id) => async (dispatch) => {
+export const initTrackerWithFB = () => async (dispatch) => {
     const db = getDatabase(firebase);
-    const chatRef = ref(db, `/chats/${id}`);
+    const chatRef = ref(db, `/chats`);
     onValue(chatRef, (snapshot) => {
         const data = snapshot.val();
-        const chatIds = Object?.keys(data);
+        const chatIds = Object.keys(data);
         const chatArr = chatIds.map(item => ({ id: item, name: data[item].name }));
         dispatch(chatListUpdate(chatArr));
     })
+
 }
 
 export const getMassagesByChatIdWithFB = (chatId) => async (dispatch) => {

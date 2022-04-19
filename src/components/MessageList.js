@@ -15,6 +15,7 @@ const MessageList = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+
         dispatch(getMassagesByChatIdWithFB(chatId))
     }, [chatId])
 

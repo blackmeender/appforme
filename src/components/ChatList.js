@@ -30,8 +30,8 @@ const ChatList = () => {
     }
 
     useEffect(() => {
-        dispatch(initTrackerWithFB())
-    }, [])
+        dispatch(initTrackerWithFB());
+    }, []);
 
     return (
         <>
@@ -45,7 +45,7 @@ const ChatList = () => {
 
             </div>
             <div>
-                {chats?.map((chat, index) => (
+                {chats?.length > 0 ? chats?.map((chat, index) => (
                     <div key={index}>
                         <Link to={`/chats/${chat.id}`} className='link'>
                             {chat.name}
@@ -53,7 +53,8 @@ const ChatList = () => {
                         </Link>
 
                     </div>
-                ))}
+                )) : <div>Чатов нет</div>}
+
             </div >
 
             <button onClick={handleOpen}>Add Chat</button>
