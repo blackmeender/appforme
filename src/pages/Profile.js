@@ -36,12 +36,12 @@ const Profile = () => {
                 <Link to='/' className='link'>Home</Link>
                 <Link to='/profile' className='link'>Profile</Link>
                 <Link to='/chats' className='link'>Chats</Link>
+                <Link to='/registration' className='link'>Registration</Link>
+                <Link to='/login' className='link'>Enter</Link>
 
             </div>
             <ToastContainer />
             <h1>Profile</h1>
-
-
             <FormControlLabel
                 control={
                     <Checkbox

@@ -2,15 +2,22 @@ import { List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@mui/mater
 import PropTypes from 'prop-types';
 import { AUTHOR } from '../constant/common';
 import { ArrowUpward, Android, SentimentSatisfiedAlt } from '@mui/icons-material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from "react-router-dom"
-
+import { useEffect } from 'react';
+import { getMassagesByChatIdWithFB } from '../store/middleware'
 
 const MessageList = () => {
 
     const allMessages = useSelector(state => state.messages.messageList)
     const { chatId } = useParams()
     const messages = allMessages[chatId]
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+
+        dispatch(getMassagesByChatIdWithFB(chatId))
+    }, [chatId])
 
 
     return (

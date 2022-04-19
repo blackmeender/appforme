@@ -2,6 +2,7 @@ import { AUTHOR } from "../../constant/common"
 
 export const ADD_MESSAGE = 'MESSAGES::ADD_MESSAGE'
 export const ADD_MESSAGE_WIDTH_SAGA = 'MESSAGES::ADD_MESSAGE_WIDTH_SAGA'
+export const UPDATE_MESSAGES = 'MESSAGES::UPDATE_MESSAGES'
 
 export const addMessage = (chatId, message) => ({
     type: ADD_MESSAGE,
@@ -32,3 +33,9 @@ export const addMessage = (chatId, message) => ({
 //         }, 3000)
 //     }
 // }
+
+export const updateMessages = (chatId, messages) => ({
+    type: UPDATE_MESSAGES,
+    chatId,
+    messages
+})
