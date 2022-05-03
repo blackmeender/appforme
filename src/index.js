@@ -26,13 +26,13 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate persistor={persistor} loading={<CircularProgress></CircularProgress>}>
-        <ThemeProvider theme={theme}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </ThemeProvider>
-      </PersistGate>
+      {/* <PersistGate persistor={persistor} loading={<CircularProgress></CircularProgress>}> */}
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

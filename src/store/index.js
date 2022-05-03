@@ -19,22 +19,24 @@ const reducers = combineReducers({
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose
-const persistConfig = {
-    key: 'root',
-    storage,
-}
 
-const persistedReducer = persistReducer(persistConfig, reducers)
-// const sagaMiddleWare = createSagaMiddleware()
 const store = createStore(
-    persistedReducer,
+    reducers,
     composeEnhancers(applyMiddleware(thunk))
 )
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+// }
+
+// const persistedReducer = persistReducer(persistConfig, reducers)
+// const sagaMiddleWare = createSagaMiddleware()
+
 
 // sagaMiddleWare.run(mySaga)
 
 
 
-export const persistor = persistStore(store)
+// export const persistor = persistStore(store)
 
 export default store
