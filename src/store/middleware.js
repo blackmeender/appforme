@@ -49,7 +49,7 @@ export const initTrackerWithFB = () => async (dispatch) => {
     const chatRef = ref(db, `/chats`);
     onValue(chatRef, (snapshot) => {
         const data = snapshot.val();
-        const chatIds = Object.keys(data);
+        const chatIds = Object?.keys(data);
         const chatArr = chatIds.map(item => ({ id: item, name: data[item].name }));
         dispatch(chatListUpdate(chatArr));
     })
